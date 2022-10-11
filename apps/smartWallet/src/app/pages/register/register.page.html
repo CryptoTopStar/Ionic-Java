@@ -1,0 +1,50 @@
+
+<ion-header>
+    <ion-toolbar color="primary">
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="login"></ion-back-button>
+      </ion-buttons>
+      <ion-title>Register</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+
+
+<ion-content padding>
+  <form (ngSubmit)="register(registerCredentials)" #registerForm="ngForm">
+      <ion-row>
+        <ion-col>
+          <ion-list inset>
+
+            <ion-item>
+              <ion-label color="primary"><ion-icon name="person"></ion-icon></ion-label>
+              <ion-input type="text" placeholder="User Name" name="name" [(ngModel)]="registerCredentials.username" required></ion-input>
+            </ion-item>
+
+            <ion-item>
+                <ion-label color="primary"><ion-icon name="mail"></ion-icon></ion-label>
+              <ion-input type="text" placeholder="Email" name="email" [(ngModel)]="registerCredentials.email" required></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-label color="primary"><ion-icon name="lock"></ion-icon></ion-label>
+              <ion-input type="password" placeholder="Password" name="password" [(ngModel)]="registerCredentials.password" required></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-input type="password" placeholder="Confirm Password" name="confirmPassword" [(ngModel)]="registerCredentials.confirmPassword" required></ion-input>
+            </ion-item>
+
+          </ion-list>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col class="signup-col">
+            <ion-button shape="round" expand="full" color="primary"  [disabled]="!registerForm.form.valid">Register</ion-button>
+        </ion-col>
+      </ion-row>
+
+    </form>
+</ion-content>
+

@@ -1,0 +1,36 @@
+<ion-header>
+ <ion-toolbar color="tertiary">
+    <ion-title>Login</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content padding >
+  <div class="login-logo"></div>
+  <form [formGroup]="loginForm" class="login-form" >
+      <ion-row align-items-center>
+        <ion-col>
+          <ion-list inset>
+
+              <ion-item>
+                  
+                <ion-label color="tertiary">
+                  <ion-icon name="person"></ion-icon>
+                </ion-label>
+                <ion-input type="email" placeholder="Email" formControlName="username" name="username"  required></ion-input> 
+              </ion-item>
+              <font class="error-font" *ngIf="username.touched && (!username.valid  && (username.dirty))" >This Field is Required</font>
+
+              <ion-item>
+                <ion-label color="tertiary"><ion-icon name="lock"></ion-icon></ion-label>
+                <ion-input type="password" placeholder="Password" formControlName="password" name="password" required></ion-input> 
+              </ion-item>
+          </ion-list>
+        </ion-col>
+        
+      </ion-row>
+      <ion-button shape="round" expand="full" color="tertiary"  (click)="login(loginForm.value)">Login</ion-button>
+    </form>
+    <div class="login-error" *ngIf="loginErrorText">
+       <font color="red">{{loginErrorText}}</font>
+    </div>
+</ion-content>
+<ion-button color="tertiary"  fill="outline" (click)="createAccount()">Create New Account</ion-button>

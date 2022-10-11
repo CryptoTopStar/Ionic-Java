@@ -1,0 +1,99 @@
+<div  class="mat-elevation-z4 admin-user-list" class="components-container-gt-xs"  [ngClass.xs]="'components-container-xs'"  fxLayoutGap="8px">
+    
+        <mat-toolbar class="wild-blue-yonder" >
+            <span fxFlex></span>
+            <span>
+            <button mat-icon-button  routerLink="/admin/user/add" >
+              Add
+            </button>
+            </span>
+          </mat-toolbar>
+        <div class="main-content">
+         
+          <mat-table #table [dataSource]="dataSource" matSort matSortActive="DeviceId" matSortDisableClear matSortDirection="asc" >
+             
+                <!-- Position Column -->
+                <ng-container matColumnDef="Name">
+                    <mat-header-cell *matHeaderCellDef  mat-sort-header>Name</mat-header-cell>
+                    <mat-cell *matCellDef="let element"> {{element.username || '--'}} </mat-cell>
+                </ng-container>
+        
+                <!-- Position Column -->
+                <ng-container matColumnDef="Email" >
+                  <mat-header-cell *matHeaderCellDef  mat-sort-header>Email</mat-header-cell>
+                  <mat-cell *matCellDef="let element"> {{element.email  || '--'}} </mat-cell>
+                </ng-container>
+        
+                <!-- Name Column -->
+                <ng-container matColumnDef="Mobile">
+                  <mat-header-cell *matHeaderCellDef mat-sort-header> Mobile </mat-header-cell>
+                  <mat-cell *matCellDef="let element"> {{element.mobile  || '--'}} </mat-cell>
+                </ng-container>
+        
+                <!-- Weight Column -->
+                 <ng-container matColumnDef="Enable">
+                  <mat-header-cell *matHeaderCellDef mat-sort-header> Enable </mat-header-cell>
+                  <mat-cell *matCellDef="let element"> 
+                    <mat-slide-toggle
+                    [(ngModel)]="element.enabled"
+                    [color]="primary"
+                    [checked]="element.enabled"
+                    [disabled]="disabled"
+                    (change)="onEnableUser(element)"
+                    >
+                    <!-- {{element.enabled ? 'Enabled' : 'Disabled'}} -->
+                </mat-slide-toggle> 
+                  </mat-cell>
+                </ng-container>
+        
+                <!-- Symbol Column 
+                <ng-container matColumnDef="Status">
+                  <mat-header-cell *matHeaderCellDef mat-sort-header> Status </mat-header-cell>
+                  <mat-cell *matCellDef="let element"> 
+                    <mat-icon *ngIf="element.enabled"><i class="zmdi zmdi-wifi table-icon color-mat_green"></i></mat-icon>
+                    <mat-icon *ngIf="!element.enabled"><i class="zmdi zmdi-wifi-off table-icon color-mat-red"></i></mat-icon>
+                  </mat-cell>
+                </ng-container>
+                -->
+        
+                <ng-container matColumnDef="Action">
+                  <mat-header-cell *matHeaderCellDef> Action </mat-header-cell>
+                  <mat-cell *matCellDef="let element"> 
+                    <button mat-icon-button [matMenuTriggerFor]="menu">
+                        <mat-icon><i class="zmdi zmdi-more-vert table-icon"></i></mat-icon>
+                      </button>
+                      <mat-menu #menu="matMenu">
+                        <button mat-menu-item (click)="onDelete(element)">
+                          <mat-icon><i class="zmdi zmdi-delete table-icon"></i></mat-icon>
+                          <span>Delete</span>
+                        </button>
+                      </mat-menu>
+                    </mat-cell>
+                  </ng-container>
+        
+                <mat-header-row *matHeaderRowDef="getDisplayedColumns()"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: getDisplayedColumns();"></mat-row>
+              
+              </mat-table>
+          
+              <app-no-data-found
+                  [loading] = "isLoadingResults" 
+                  [dataLength] = "dataSource.data.length || 0" >
+              </app-no-data-found>
+        
+            <mat-paginator [hidden]="dataSource.data.length !== 0" #paginator
+                          [pageSize]="10"
+                          [pageSizeOptions]="[5, 10, 20,25]"
+                          [length]="resultsLength"
+                          >
+            </mat-paginator>
+        </div>
+        
+        
+        
+    <!-- <div class="custom-fab">
+        <a mat-mini-fab routerLink="/admin/addUser" style="margin-right : 14px;font-size: 22px;">
+            <mat-icon><i class="zmdi zmdi-plus zmdi-hc-1x"></i></mat-icon>
+        </a>
+    </div> -->
+</div>

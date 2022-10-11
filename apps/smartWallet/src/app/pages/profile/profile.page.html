@@ -1,0 +1,51 @@
+<app-header title="Profile"></app-header>
+
+<ion-content padding>
+  
+  <form class="ion-grid" [formGroup]="profileForm" >
+    <ion-row align-items-center>
+      <ion-col>
+        <ion-list inset>
+
+            <ion-item>
+                <ion-label>
+                  <ion-button (click)="locateCity()">
+                    <ion-icon slot="icon-only" name="locate"></ion-icon>
+                </ion-button>
+              </ion-label>
+                <ion-input  required placeholder="City" [formControl]="city"></ion-input>
+            </ion-item>
+            <div *ngIf="city.errors && city.touched" class="form-error">
+                <font color="red" *ngIf="email.errors.required">This field is Requred</font>
+            </div>
+            
+            
+            <ion-item>
+                <ion-textarea [formControl]="address" placeholder="Address..." required></ion-textarea>
+            </ion-item>
+            <div *ngIf="address.errors && address.touched" class="form-error">
+                <font color="red" *ngIf="email.errors.required">This field is Requred</font>
+            </div>
+            
+
+            <ion-item>
+              <ion-input type="email" [formControl]="email" placeholder="Email" name="email"></ion-input>
+            </ion-item>
+            <div *ngIf="email.errors && !email.valid && email.touched" class="form-error">
+                <font color="red" *ngIf="email.errors.required">Email is required</font>
+                <font color="red" *ngIf="email.errors.email">Email must be a valid email address</font>
+            </div>
+          </ion-list>
+      </ion-col>
+    </ion-row>
+    
+    
+  </form>
+  
+
+</ion-content>
+<ion-footer>
+    <ion-button (click)="onSubmit(profileForm.value)" expand="full" color="primary"  [disabled]="!profileForm.valid">Submit</ion-button>
+    <app-footer></app-footer>
+  </ion-footer>
+

@@ -1,0 +1,94 @@
+/* You can add global styles to this file, and also import other style files */
+/* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+.bg-image {
+  position: fixed;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  display: block;
+  background-image: url('assets/img/background/bg5.jpg');
+  width: 100%;
+  height: 800px;
+
+-webkit-filter: blur(3px);
+-moz-filter: blur(3px);
+-o-filter: blur(3px);
+-ms-filter: blur(3px);
+filter: blur(3px);
+}
+
+  .snow {
+    background: #FCFCFC
+}
+.hawkes-blue{
+    background : #DBDEE5;
+}
+.free-speech-blue{
+ background:  #4052B5
+}
+
+
+.link-water{
+    background: #CCCDD1;
+}
+.spun-pearl{
+   background : #ABABAC;
+}
+.wild-blue-yonder{
+    background: #6F7ECB !important;
+    color: #ffff !important;
+}
+
+.error{
+  
+  color: #f44336;
+  font-size: 15px;
+  line-height: 1.5em;
+  margin-left: 12px;
+}
+
+.position-relative{
+  position: relative
+}
+
+.form-error-span{
+  position: absolute;
+  width: 100%;
+  bottom: 0px;
+  left: 0;
+}
+
+.pd-left-10x{
+  padding-left: 10px !important;
+}
+
+
+.pd-right-10x{
+  padding-right: 10px !important;
+}
+
+.red-snackbar {
+  background: #FF5252 !important;
+}
+
+.green-snackbar {
+  background: #4CAF50 !important;
+}
+
+.form-container {
+	padding: 5px 15px 15px 15px;
+}
+
+.form-component-holder {
+	background-color: white;
+}
+
+
+
+  
+
+  
+
+  

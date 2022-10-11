@@ -1,0 +1,1 @@
+export * from './no-data-found.component';

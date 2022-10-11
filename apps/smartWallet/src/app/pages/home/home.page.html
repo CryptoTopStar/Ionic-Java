@@ -1,0 +1,13 @@
+<app-header [title]="Home"></app-header>
+
+<ion-content class="wrapper">
+    <section *ngFor="let item of catList">
+        <app-category-view [data]="item"></app-category-view>
+    </section>
+</ion-content>
+<app-footer></app-footer>
+
+
+
+
+    

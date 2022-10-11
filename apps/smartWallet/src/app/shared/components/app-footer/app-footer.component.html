@@ -1,0 +1,11 @@
+<ion-footer class="footer">
+  <ion-tabs>
+      <ion-tab-bar slot="bottom">
+        <ion-tab-button tab="{{item.name}}" *ngFor="let item of footers" (click)="navigateRoute(item.url)">
+          <ion-icon name="{{item.icon}}"></ion-icon>
+          <ion-label>{{item.title}}</ion-label>
+          <ion-badge *ngIf="item.count">{{item.count}}</ion-badge>
+        </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>
+</ion-footer>

@@ -1,0 +1,29 @@
+ion-grid {
+    height: 100%;
+    justify-content: center;
+}
+
+.login-form {
+    position: relative;
+}
+
+.app-logo{
+    position: relative;
+    width: 100px;
+    height: 100px;
+    left: 33%;
+    top: 10%;
+    
+}
+
+.error-font{
+    position: relative;
+    top: 5px;
+    left: 3px;
+    color: red;
+}
+
+.login-error{
+    text-align: center;
+    padding:15px;
+}

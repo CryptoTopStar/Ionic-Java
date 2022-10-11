@@ -1,0 +1,59 @@
+
+<div class="bg-image"></div>
+<form [formGroup]="signupForm">
+    <div class="login-content">
+        <mat-card style="padding: 30px;">
+            <mat-card-header>
+                <div mat-card-avatar class="example-header-image"></div>
+                <mat-card-title><span class="login-lock"><i class="zmdi zmdi-account"></i></span>SIGNUP</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <div  fxLayout="row wrap" fxLayout.xs="column" fxLayoutGap="10px">
+
+                    
+                    <mat-form-field appearance="outline" fxFlex [ngClass]="{'has-error':!username.valid && username.touched }">
+                        <mat-label>User Name</mat-label>
+                        <input matInput [formControl]="username">
+                        <mat-error *ngIf="username.invalid">{{errMsgSrv.getFormErrorMessage(username)}}</mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline" fxFlex  [ngClass]="{'has-error':!email.valid && email.touched }">
+                            <mat-label>Email</mat-label>
+                            <input matInput name="email"  [formControl]="email">
+                            <mat-error *ngIf="email.invalid">{{errMsgSrv.getFormErrorMessage(email)}}</mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline" fxFlex [ngClass]="{'has-error':!mobile.valid && mobile.touched }">
+                            <mat-label>Mobile</mat-label>
+                            <input matInput type="number" name="mobile"  [formControl]="mobile">
+                            <mat-error *ngIf="mobile.invalid">{{errMsgSrv.getFormErrorMessage(mobile)}}</mat-error>
+                    </mat-form-field>
+                    
+                    <mat-form-field appearance="outline" fxFlex [ngClass]="{'has-error':!password.valid && password.touched }">
+                        <mat-label>Password</mat-label>
+                        <input type="password" matInput name="password" [formControl]="password">
+                        <mat-error *ngIf="password.invalid">{{errMsgSrv.getFormErrorMessage(password)}}</mat-error>
+                    </mat-form-field>
+        
+                    <mat-form-field appearance="outline" fxFlex [ngClass]="{'has-error':!confirmPassword.valid && confirmPassword.touched && password.value != confirmPassword.value }">
+                        <mat-label>Confirm Password</mat-label>
+                        <input type="password" matInput  [formControl]="confirmPassword">
+                        <mat-error *ngIf="password.value != confirmPassword.value">Password Did not match</mat-error>
+                        <mat-error *ngIf="confirmPassword.invalid">{{errMsgSrv.getFormErrorMessage(confirmPassword)}}</mat-error>
+                    </mat-form-field>
+                    <div fxFlex fxHide.sm></div>
+                    
+                    <div *ngIf="error">
+                            <font color="red">{{error}}</font>
+                    </div>
+                </div>
+            </mat-card-content>
+            <mat-card-actions fxLayout="column">
+               <button color="primary" mat-raised-button (click)="signup(signupForm.value)" [disabled]="!signupForm.valid || disabled" >Signup</button>
+                <div fxLayout="row">
+                    <a  class="login-back-btn" color="primary" mat-button [routerLink]="[ '/auth/login' ]" ><i class="zmdi zmdi-arrow-left zmdi-hc-fw"></i>login</a>
+                </div>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+</form>

@@ -1,0 +1,23 @@
+
+<div class="bg-image"></div>
+
+    <div class="login-content">
+        <mat-card>
+            <mat-card-header>
+                <div mat-card-avatar class="example-header-image"></div>
+                <mat-card-title>Signup Success !!</mat-card-title>
+            </mat-card-header>
+
+            <mat-card-content>
+                <h4>Your Account Created Successfully</h4>
+                <h5>activation link has been sent to your email address</h5>
+                <p>please veryfy your email and login.</p>
+            </mat-card-content>
+
+            <mat-card-actions fxLayout="column">
+                <div fxLayout="row">
+                    <a  color="primary" mat-button [routerLink]="[ '/auth/login' ]" ><i class="zmdi zmdi-arrow-left zmdi-hc-fw"></i>login</a>
+                </div>
+            </mat-card-actions>
+        </mat-card>
+    </div>

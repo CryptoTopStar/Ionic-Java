@@ -1,0 +1,54 @@
+<ion-menu contentId="content">
+ 
+  <ion-header>
+    <ion-toolbar color="primary">
+      <ion-title>Menu</ion-title>
+    </ion-toolbar>
+  </ion-header>
+ 
+  <ion-content>
+ 
+    <div *ngFor="let p of pages">
+ 
+      <!-- Standard Menu Item -->
+      <ion-menu-toggle *ngIf="p.url">
+        <ion-item [routerLink]="p.url" routerDirection="root" routerLinkActive="active">
+          <ion-icon [name]="p.icon" slot="start"></ion-icon>
+          <ion-label>
+            {{ p.title }}
+          </ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+      <!-- Item with Children -->
+ 
+      <ion-item button *ngIf="p.children?.length > 0" (click)="p.open = !p.open" [class.parent-active]="p.open" detail="false">
+        <ion-icon slot="start" name="arrow-forward" *ngIf="!p.open"></ion-icon>
+        <ion-icon slot="start" name="arrow-down" *ngIf="p.open"></ion-icon>
+        <ion-label>{{ p.title }}</ion-label>
+      </ion-item>
+ 
+      <!-- Children List for clicked Item -->
+      <ion-list *ngIf="p.open">
+        <ion-menu-toggle>
+          <ion-item *ngFor="let sub of p.children" class="sub-item" [routerLink]="sub.url" routerDirection="root"
+            routerLinkActive="active">
+            <ion-icon [name]="sub.icon" slot="start"></ion-icon>
+            <ion-label>
+              {{ sub.title }}
+            </ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+      </ion-list>
+      
+    </div>
+  </ion-content>
+  <ion-footer>
+      <ion-button expand="block" fill="outline" (click)="logout()">
+        <ion-icon name="log-out" slot="start"></ion-icon>
+        <ion-label>Logout</ion-label> 
+    </ion-button>
+  </ion-footer>
+ 
+</ion-menu>
+ 
+<ion-router-outlet id="content" main></ion-router-outlet>

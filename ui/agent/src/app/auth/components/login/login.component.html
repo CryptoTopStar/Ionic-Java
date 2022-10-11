@@ -1,0 +1,45 @@
+
+<div class="bg-image"></div>
+<form [formGroup]="loginForm" class="login-content ">
+<div fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="center">
+        <mat-card style="padding: 30px;">
+                <mat-card-header>
+                  <div mat-card-avatar class="example-header-image"></div>
+                  <mat-card-title><span class="login-lock"><i class="zmdi zmdi-lock"></i></span>LOG IN</mat-card-title>
+
+                </mat-card-header>
+                <mat-card-content>
+                        <div  fxLayout="row wrap" fxLayout.xs="column" fxLayoutGap="10px">
+                                <mat-form-field class="mleft-0" appearance="outline"  fxFlex="100" [ngClass]="{'has-error':!username.valid && username.touched }" >
+                                        
+                                        <mat-label>User Name</mat-label>
+                                        <input matInput name="username" [formControl]="username">
+                                        <mat-error *ngIf="username.invalid">{{errMsgSrv.getFormErrorMessage(username)}}</mat-error>
+                                    </mat-form-field>
+
+                                    <mat-form-field appearance="outline" fxFlex="100" [ngClass]="{'has-error':!password.valid && password.touched }">
+                                        
+                                        <mat-label>Password</mat-label>
+                                        <input [type]="hide ? 'password' : 'text'"  matInput  [formControl]="password" >
+                                        <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                        <mat-error *ngIf="password.invalid">{{errMsgSrv.getFormErrorMessage(password)}}</mat-error>
+                                    </mat-form-field>
+                                    <div *ngIf="error">
+                                            <font color="red">{{error}}</font>
+                                    </div>
+                        </div>
+                </mat-card-content>
+                <mat-card-actions fxLayout="column" class="login-action">
+                    <button color="primary" type="submit" mat-raised-button [disabled]="!loginForm.valid || disabled" (click)="login(loginForm.value)">Login</button>
+                    <div fxLayout="row">
+                        <a  class="forget-btn" mat-button [routerLink]="[ '/auth/forget-password' ]">Forget Password?</a>
+                        <span fxFlex></span>
+                        <a  class="forget-btn" mat-button [routerLink]="[ '/auth/signup' ]">signup</a>
+                    </div>
+
+                </mat-card-actions>
+              </mat-card>
+
+
+</div>
+</form>
